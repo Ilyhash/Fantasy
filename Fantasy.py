@@ -105,7 +105,9 @@ def fighting():
                 else:
                     fighter1.health -= 1
                     fighter2.health -= 1
-                    print("Both get hit, {}'s health is {} and {}'s health is {}".format(fighter1.name, fighter1.health, fighter2.name, fighter2.health))
+                    print("Both get hit, {}'s health is {} and {}'s health is {}".format(fighter1.name, fighter1.health,
+                                                                                         fighter2.name,
+                                                                                         fighter2.health))
             elif c == 2:
                 if fighter1.agi > fighter2.agi:
                     fighter2.health -= 1
@@ -116,7 +118,9 @@ def fighting():
                 else:
                     fighter1.health -= 1
                     fighter2.health -= 1
-                    print('Both get hit, their health is {} and {}'.format(fighter1.health, fighter2.health))
+                    print("Both get hit, {}'s health is {} and {}'s health is {}".format(fighter1.name, fighter1.health,
+                                                                                         fighter2.name,
+                                                                                         fighter2.health))
             elif c == 3:
                 if fighter1.int > fighter2.int:
                     fighter2.health -= 1
@@ -127,7 +131,9 @@ def fighting():
                 else:
                     fighter1.health -= 1
                     fighter2.health -= 1
-                    print('Both get hit, their health is {} and {}'.format(fighter1.health, fighter2.health))
+                    print("Both get hit, {}'s health is {} and {}'s health is {}".format(fighter1.name, fighter1.health,
+                                                                                         fighter2.name,
+                                                                                         fighter2.health))
 
 
 fighting()
