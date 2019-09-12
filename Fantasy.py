@@ -55,6 +55,7 @@ class Hobbit(Heroes):
 
 
 Arthur = Knight('Arthur', 1)
+Arthur.str = 10
 Altair = Assassin('Altair', 2)
 Gendalf = Mage('Gendalf', 3)
 Boromir = Knight('Boromir', 4)
@@ -80,11 +81,12 @@ def fighting():
             print('Frodo used the ring and killed {}'.format(fighter2.name))
             return
         elif c == 5 and fighter2.name == 'Frodo':
-            print('Frodo used the ring and killed {}'.format(fighter2.name))
+            print('Frodo used the ring and killed {} \n{}'.format(fighter2.name, fighter2.name))
             return
     while fighter1.health >= 0 and fighter2.health >= 0:
         if fighter1.health == 0 and fighter2.health == 0:
             print('Both are dead')
+            break
         elif fighter1.health == 0:
             print('{} is dead.'.format(fighter1.name))
             break
@@ -103,7 +105,7 @@ def fighting():
                 else:
                     fighter1.health -= 1
                     fighter2.health -= 1
-                    print('Both get hit, their health is {} and {}'.format(fighter1.health, fighter2.health))
+                    print("Both get hit, {}'s health is {} and {}'s health is {}".format(fighter1.name, fighter1.health, fighter2.name, fighter2.health))
             elif c == 2:
                 if fighter1.agi > fighter2.agi:
                     fighter2.health -= 1
