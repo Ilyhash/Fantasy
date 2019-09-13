@@ -78,10 +78,10 @@ def fighting():
     if fighter1.name == 'Frodo' or fighter2.name == 'Frodo':
         c = randint(1, 5)
         if c == 5 and fighter1.name == 'Frodo':
-            print('Frodo used the ring and killed {}'.format(fighter2.name))
+            print('Frodo used the ring and killed {} \n{} is dead'.format(fighter2.name, fighter2.name))
             return
         elif c == 5 and fighter2.name == 'Frodo':
-            print('Frodo used the ring and killed {} \n{}'.format(fighter2.name, fighter2.name))
+            print('Frodo used the ring and killed {} \n{} is dead'.format(fighter1.name, fighter1.name))
             return
     while fighter1.health >= 0 and fighter2.health >= 0:
         if fighter1.health == 0 and fighter2.health == 0:
