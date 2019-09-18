@@ -12,60 +12,65 @@ class Heroes:
 
 
 class Knight(Heroes):
+    desc = 'the noble warrior'
+    str = 5
+    agi = 3
+    int = 2
+    health = 35
+    minatk = 2
+    maxatk = 4
+
     def __init__(self, name, number):
         self.name = name
-        self.desc = 'the noble warrior'
-        self.health = 35
-        self.minatk = 2
-        self.maxatk = 4
-        self.str = 5
-        self.agi = 3
-        self.int = 1
         super().__init__(name, number)
 
 
 class Assassin(Heroes):
+    desc = 'the silent killer'
+    str = 1
+    agi = 6
+    int = 2
+    health = 25
+    minatk = 3
+    maxatk = 6
+
     def __init__(self, name, number):
         self.name = name
-        self.desc = 'the silent killer'
-        self.health = 25
-        self.minatk = 3
-        self.maxatk = 6
-        self.str = 1
-        self.agi = 6
-        self.int = 2
         super().__init__(name, number)
 
 
 class Mage(Heroes):
+    desc = 'the wise wizard'
+    str = 1
+    agi = 2
+    int = 6
+    health = 20
+    minatk = 3
+    maxatk = 4
+
     def __init__(self, name, number):
         self.name = name
-        self.desc = 'the wise wizard'
-        self.health = 20
-        self.minatk = 3
-        self.maxatk = 4
-        self.str = 1
-        self.agi = 2
-        self.int = 6
         super().__init__(name, number)
 
 
 class Hobbit(Heroes):
+    desc = 'the half-man'
+    str = 1
+    agi = 4
+    int = 1
+    health = 20
+    minatk = 2
+    maxatk = 3
+
     def __init__(self, name, number):
         self.name = name
-        self.desc = 'the half-man'
-        self.health = 20
-        self.minatk = 2
-        self.maxatk = 3
-        self.str = 1
-        self.agi = 4
-        self.int = 1
         super().__init__(name, number)
 
 
 Arthur = Knight('Arthur', 1)
 Arthur.str = 10
 Altair = Assassin('Altair', 2)
+Altair.agi += 1
 Gendalf = Mage('Gendalf', 3)
 Boromir = Knight('Boromir', 4)
 Frodo = Hobbit('Frodo', 5)
@@ -79,6 +84,15 @@ Horus = Knight('Horus', 7)
 Horus.desc = 'the Traitor'
 Horus.health = 50
 Horus.agi += 1
+Hitman = Assassin('Hitman', 8)
+Hitman.int += 1
+Aqua = Mage('Aqua', 9)
+Aqua.desc = 'the useless goddess'
+Aqua.str += 3
+Aqua.agi += 1
+Aqua.int = 1
+ChaosKnight = Knight('Chaos knight', 10)
+ChaosKnight.desc = 'the random everything'
 
 
 def fighter_choice():
@@ -103,6 +117,13 @@ def special_case(fighter1, fighter2):
     if fighter1 == Boromir or fighter2 == Boromir:
         Boromir.health = 0
         print('{} dies'.format(Boromir.name))
+    if fighter1 == ChaosKnight or fighter2 == ChaosKnight:
+        r = randint(1, 5)
+        ChaosKnight.str = randint(Knight.str - r, Knight.str + r)
+        ChaosKnight.agi = randint(Knight.agi - r, Knight.agi + r)
+        ChaosKnight.int = randint(Knight.int - r, Knight.int + r)
+        ChaosKnight.minatk = randint(1, 5)
+        ChaosKnight.maxatk = ChaosKnight.minatk + randint(0, 2)
 
 
 def death_confirm(fighter1, fighter2):
@@ -121,6 +142,8 @@ def atk(self):
 
 
 def stat_choice(fighter1, fighter2):
+    par1 = 0
+    par2 = 0
     c = randint(1, 3)
     if c == 1:
         par1 = fighter1.str
@@ -131,7 +154,8 @@ def stat_choice(fighter1, fighter2):
     elif c == 3:
         par1 = fighter1.int
         par2 = fighter2.int
-    return par1, par2
+    return [par1, par2]
+
 
 def fighting():
     fighter1 = fighter_choice()
