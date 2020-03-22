@@ -1,129 +1,37 @@
 from random import randint
 import time
-
-
-class Heroes:
-    heroes = {}
-
-    def __init__(self, name, number):
-        self.name = name
-        self.number = number
-        Heroes.heroes[self.number] = self
-
-
-class Knight(Heroes):
-    desc = 'the noble warrior'
-    str = 5
-    agi = 3
-    int = 2
-    health = 35
-    minatk = 2
-    maxatk = 4
-
-    def __init__(self, name, number):
-        self.name = name
-        super().__init__(name, number)
-
-
-class Assassin(Heroes):
-    desc = 'the silent killer'
-    str = 1
-    agi = 6
-    int = 2
-    health = 25
-    minatk = 3
-    maxatk = 6
-
-    def __init__(self, name, number):
-        self.name = name
-        super().__init__(name, number)
-
-
-class Mage(Heroes):
-    desc = 'the wise wizard'
-    str = 1
-    agi = 2
-    int = 6
-    health = 20
-    minatk = 3
-    maxatk = 4
-
-    def __init__(self, name, number):
-        self.name = name
-        super().__init__(name, number)
-
-
-class Hobbit(Heroes):
-    desc = 'the half-man'
-    str = 1
-    agi = 4
-    int = 1
-    health = 20
-    minatk = 2
-    maxatk = 3
-
-    def __init__(self, name, number):
-        self.name = name
-        super().__init__(name, number)
-
-
-Arthur = Knight('Arthur', 1)
-Arthur.str = 10
-Altair = Assassin('Altair', 2)
-Altair.agi += 1
-Gendalf = Mage('Gendalf', 3)
-Boromir = Knight('Boromir', 4)
-Frodo = Hobbit('Frodo', 5)
-TheEmperor = Knight('The Emperor', 6)
-TheEmperor.desc = 'of mankind'
-TheEmperor.health = 100
-TheEmperor.minatk = 8
-TheEmperor.maxatk = 12
-TheEmperor.int += 1
-Horus = Knight('Horus', 7)
-Horus.desc = 'the Traitor'
-Horus.health = 50
-Horus.agi += 1
-Hitman = Assassin('Hitman', 8)
-Hitman.int += 1
-Aqua = Mage('Aqua', 9)
-Aqua.desc = 'the useless goddess'
-Aqua.str += 3
-Aqua.agi += 1
-Aqua.int = 1
-ChaosKnight = Knight('Chaos knight', 10)
-ChaosKnight.desc = 'the random everything'
+import Characters as Ch
 
 
 def fighter_choice():
-    i = randint(1, len(Heroes.heroes))
-    return Heroes.heroes[i]
+    i = randint(1, len(Ch.Heroes.heroes))
+    return Ch.Heroes.heroes[i]
 
 
 def special_case(fighter1, fighter2):
-    if fighter1 == Frodo or fighter2 == Frodo:
+    if fighter1 == Ch.Frodo or fighter2 == Ch.Frodo:
         c = randint(1, 5)
-        if c == 5 and fighter1 == Frodo:
+        if c == 5 and fighter1 == Ch.Frodo:
             print('Frodo used the ring and killed {} \n{} is dead'.format(fighter2.name, fighter2.name))
             fighter2.health = 0
             return
-        elif c == 5 and fighter2 == Frodo:
+        elif c == 5 and fighter2 == Ch.Frodo:
             print('Frodo used the ring and killed {} \n{} is dead'.format(fighter1.name, fighter1.name))
             fighter1.health = 0
             return
-    if fighter1 == Horus and fighter2 == TheEmperor or fighter1 == TheEmperor and fighter2 == Horus:
-        Horus.minatk = 20
-        Horus.maxatk = 30
-    if fighter1 == Boromir or fighter2 == Boromir:
-        Boromir.health = 0
-        print('{} dies'.format(Boromir.name))
-    if fighter1 == ChaosKnight or fighter2 == ChaosKnight:
+    if fighter1 == Ch.Horus and fighter2 == Ch.TheEmperor or fighter1 == Ch.TheEmperor and fighter2 == Ch.Horus:
+        Ch.Horus.min_atk = 20
+        Ch.Horus.max_atk = 30
+    if fighter1 == Ch.Boromir or fighter2 == Ch.Boromir:
+        Ch.Boromir.health = 0
+        print('{} dies'.format(Ch.Boromir.name))
+    if fighter1 == Ch.ChaosKnight or fighter2 == Ch.ChaosKnight:
         r = randint(1, 5)
-        ChaosKnight.str = randint(Knight.str - r, Knight.str + r)
-        ChaosKnight.agi = randint(Knight.agi - r, Knight.agi + r)
-        ChaosKnight.int = randint(Knight.int - r, Knight.int + r)
-        ChaosKnight.minatk = randint(1, 5)
-        ChaosKnight.maxatk = ChaosKnight.minatk + randint(0, 2)
+        Ch.ChaosKnight.str = randint(Ch.Knight.str - r, Ch.Knight.str + r)
+        Ch.ChaosKnight.agi = randint(Ch.Knight.agi - r, Ch.Knight.agi + r)
+        Ch.ChaosKnight.int = randint(Ch.Knight.int - r, Ch.Knight.int + r)
+        Ch.ChaosKnight.min_atk = randint(1, 5)
+        Ch.ChaosKnight.max_atk = Ch.ChaosKnight.min_atk + randint(0, 2)
 
 
 def death_confirm(fighter1, fighter2):
@@ -138,7 +46,7 @@ def death_confirm(fighter1, fighter2):
 
 
 def atk(self):
-    return randint(self.minatk, self.maxatk)
+    return randint(self.min_atk, self.max_atk)
 
 
 def stat_choice(fighter1, fighter2):
