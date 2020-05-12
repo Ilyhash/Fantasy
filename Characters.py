@@ -8,59 +8,59 @@ class Heroes:
 
 
 class Knight(Heroes):
-    desc = 'the noble warrior'
-    str = 5
-    agi = 3
-    int = 2
-    health = 35
-    min_atk = 2
-    max_atk = 4
 
     def __init__(self, name, number):
         self.name = name
         super().__init__(name, number)
+        self.desc = 'the noble warrior'
+        self.str = 5
+        self.agi = 3
+        self.int = 2
+        self.health = 35
+        self.min_atk = 2
+        self.max_atk = 4
 
 
 class Assassin(Heroes):
-    desc = 'the silent killer'
-    str = 1
-    agi = 6
-    int = 2
-    health = 25
-    min_atk = 3
-    max_atk = 6
 
     def __init__(self, name, number):
         self.name = name
         super().__init__(name, number)
+        self.desc = 'the silent killer'
+        self.str = 1
+        self.agi = 6
+        self.int = 2
+        self.health = 25
+        self.min_atk = 3
+        self.max_atk = 6
 
 
 class Mage(Heroes):
-    desc = 'the wise wizard'
-    str = 1
-    agi = 2
-    int = 6
-    health = 20
-    min_atk = 3
-    max_atk = 4
 
     def __init__(self, name, number):
         self.name = name
         super().__init__(name, number)
+        self.desc = 'the wise wizard'
+        self.str = 1
+        self.agi = 2
+        self.int = 6
+        self.health = 20
+        self.min_atk = 3
+        self.max_atk = 4
 
 
 class Hobbit(Heroes):
-    desc = 'the half-man'
-    str = 1
-    agi = 4
-    int = 1
-    health = 20
-    min_atk = 2
-    max_atk = 3
 
     def __init__(self, name, number):
         self.name = name
         super().__init__(name, number)
+        self.desc = 'the half-man'
+        self.str = 1
+        self.agi = 4
+        self.int = 1
+        self.health = 20
+        self.min_atk = 2
+        self.max_atk = 3
 
 
 Arthur = Knight('Arthur', 1)
